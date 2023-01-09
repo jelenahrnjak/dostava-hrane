@@ -33,43 +33,4 @@ public class RestaurantServiceImpl implements RestaurantService{
 		return rest.get();
 	}
 
-	@Override
-	public List<Restaurant> searchByRestaurantName(String name) {
-		return repo.findByRestaurantName(name);
-	}
-
-	@Override
-	public List<Restaurant> searchByRestaurantType(String type) {
-		return repo.findByRestaurantType(type);
-	}
-
-	@Override
-	public List<Restaurant> searchByMealName(String name) {
-		
-		List<Restaurant> all= repo.findAll();
-		List<Restaurant> result = new ArrayList<>();
-		
-		for(Restaurant r: all) {
-			List<Meal> meals = r.getMeals();
-			for(Meal m: meals) {
-				if(m.getName().toUpperCase().contains(name.toUpperCase())) result.add(r);
-			}
-		}
-		return result;
-	}
-
-	@Override
-	public List<Restaurant> searchByMealType(String type) {
-		List<Restaurant> all= repo.findAll();
-		List<Restaurant> result = new ArrayList<>();
-		
-		for(Restaurant r: all) {
-			List<Meal> meals = r.getMeals();
-			for(Meal m: meals) {
-				if(m.getMealType().toUpperCase().contains(type.toUpperCase())) result.add(r);
-			}
-		}
-		return result;
-	}
-
 }

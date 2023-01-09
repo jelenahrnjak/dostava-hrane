@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fooddelivery.orderservice.dto.NewOrderDto;
+import com.fooddelivery.orderservice.exception.OrderDeliveryStartedException;
+import com.fooddelivery.orderservice.exception.OrderTakenException;
 import com.fooddelivery.orderservice.model.Order;
 import com.fooddelivery.orderservice.service.OrderService;
 
@@ -79,9 +81,15 @@ public class OrderController {
 			Order orderChanged = orderService.takeOrder(order, deliverer);
 		    return new ResponseEntity<>(orderChanged, HttpStatus.OK);		
 		}
+		catch (OrderTakenException e){
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		catch (OrderDeliveryStartedException e){
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 		catch (Exception e){
-			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
-		}	    
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@PutMapping("/canceling/{orderId}")
@@ -91,9 +99,12 @@ public class OrderController {
 			Order orderChanged = orderService.cancelOrder(order);
 		    return new ResponseEntity<>(orderChanged, HttpStatus.OK);		
 		}
+		catch (OrderDeliveryStartedException e){
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 		catch (Exception e){
-			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
-		}	    
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@PutMapping("/delivered/{orderId}")

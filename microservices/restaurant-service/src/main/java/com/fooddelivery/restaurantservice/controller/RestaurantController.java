@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fooddelivery.restaurantservice.dto.NewRestaurantDto;
 import com.fooddelivery.restaurantservice.model.Restaurant;
 import com.fooddelivery.restaurantservice.service.RestaurantService;
+import com.fooddelivery.restaurantservice.service.SearchService;
 
 @RestController
 public class RestaurantController {
 	
 	@Autowired
 	RestaurantService service;
+	@Autowired
+	SearchService searchService;
 	
 	@PostMapping("/restaurant")
 	public ResponseEntity<?> createOrder(@RequestBody NewRestaurantDto rest, BindingResult bindingResult) {
@@ -39,7 +42,7 @@ public class RestaurantController {
 	public ResponseEntity<?> searchByName(@PathVariable("name") String name) {
 		
 		try {
-			List<Restaurant> result = service.searchByRestaurantName(name);
+			List<Restaurant> result = searchService.searchByRestaurantName(name);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){
@@ -51,7 +54,31 @@ public class RestaurantController {
 	public ResponseEntity<?> searchByType(@PathVariable("type") String type) {
 		
 		try {
-			List<Restaurant> result = service.searchByRestaurantType(type);
+			List<Restaurant> result = searchService.searchByRestaurantType(type);
+		    return new ResponseEntity<>(result, HttpStatus.OK);		
+		}
+		catch (Exception e){
+			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
+		}	    
+	}
+	
+	@GetMapping("/search/mealname/{name}")
+	public ResponseEntity<?> searchByMealName(@PathVariable("name") String name) {
+		
+		try {
+			List<Restaurant> result = searchService.searchByMealName(name);
+		    return new ResponseEntity<>(result, HttpStatus.OK);		
+		}
+		catch (Exception e){
+			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
+		}	    
+	}
+	
+	@GetMapping("/search/mealtype/{type}")
+	public ResponseEntity<?> searchByMealType(@PathVariable("type") String type) {
+		
+		try {
+			List<Restaurant> result = searchService.searchByMealType(type);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){

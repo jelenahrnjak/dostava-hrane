@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fooddelivery.orderservice.dto.NewOrderDto;
+import com.fooddelivery.orderservice.exception.OrderCancelledException;
+import com.fooddelivery.orderservice.exception.OrderDeliveryStartedException;
+import com.fooddelivery.orderservice.exception.OrderTakenException;
 import com.fooddelivery.orderservice.model.Order;
 import com.fooddelivery.orderservice.model.OrderStatus;
 import com.fooddelivery.orderservice.repository.OrderRepository;
@@ -38,7 +41,14 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order takeOrder(String orderId, String delivererId) {
 		Optional<Order> order = orderRepository.findById(orderId);
-		if(!order.get().getDelivererId().equals("none")) return null; //dodati i exception ako je u medjuvremenu otkazana porudzbina
+		if(!order.get().getDelivererId().equals("none")) {
+			throw new OrderTakenException(
+					"Order has already been taken by another deliverer.");
+		}
+		if(order.get().getOrderStatus().equals(OrderStatus.CANCELLED)) {
+			throw new OrderCancelledException(
+					"Sorry, the order has been cancelled by customer.");
+		}
 		order.get().setDelivererId(delivererId);
 		order.get().setOrderStatus(OrderStatus.DELIVERING);
 		return orderRepository.save(order.get());
@@ -47,7 +57,10 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order cancelOrder(String orderId) {
 		Optional<Order> order = orderRepository.findById(orderId);
-		if(!order.get().getOrderStatus().equals(OrderStatus.CREATED)) return null;
+		if(!order.get().getOrderStatus().equals(OrderStatus.CREATED)) {
+			throw new OrderDeliveryStartedException(
+					"Order cannot be cancelled, because delivery has already started");
+		};
 		order.get().setOrderStatus(OrderStatus.CANCELLED);
 		return orderRepository.save(order.get());
 	}
