@@ -1,0 +1,25 @@
+ 
+<app-side-bar *ngIf="showHeader()"></app-side-bar>
+<app-header *ngIf="showHeader()"></app-header>
+
+<div class="content-wrap" [ngStyle]="{'margin-left': showHeader() ? '250px' : '0' , 'margin-top': showHeader() ? '20px' : '0' }">
+    <div class="main">
+        <div class="container-fluid">
+                
+            <!-- /# row -->
+            <section id="main-content"> 
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer">
+                            <router-outlet ></router-outlet>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+    </div>
+</div>
+
+    
