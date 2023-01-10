@@ -1,0 +1,21 @@
+
+.btn-green{
+    color: #00a082;
+    background-color: #ffc244;
+} 
+
+.btn-green:hover{
+    background-color: #ffc244;
+}
+ 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
