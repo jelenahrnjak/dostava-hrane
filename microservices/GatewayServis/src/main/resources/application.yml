@@ -32,3 +32,7 @@ spring:
           uri: http://recommendation-service
           predicates:
             - Path=/recommendation-service/**
+        - id: authModules
+          uri: http://auth-service
+          predicates:
+            - Path=/auth-service/**

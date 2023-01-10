@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080'
+  baseUrlAuth: 'http://localhost:8087',
+  baseUrlOrder: 'http://localhost:8082',
+  baseUrlRecommendation: 'http://localhost:8084',
+  baseUrlUser: 'http://localhost:8085',
 };
 
 /*
