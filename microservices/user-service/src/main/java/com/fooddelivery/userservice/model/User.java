@@ -1,5 +1,6 @@
 package com.fooddelivery.userservice.model;
 import com.fooddelivery.userservice.dto.UserDto;
+import com.fooddelivery.userservice.model.enums.Role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,5 +47,13 @@ public class User {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    @Column(name = "longitude", unique = false, nullable = false)
+    private long longitude;
+    
+    @Column(name = "latitude", unique = false, nullable = false)
+    private long latitude;
+
+    @Column(name = "role", unique = false, nullable = false)
+    private Role role;
 
 }

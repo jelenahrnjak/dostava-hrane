@@ -22,6 +22,7 @@ public class UserDto {
     private String dateOfBirth;
 
     private String username;
-	
+	private long longitude;
+	private long latitude;
 
 }
