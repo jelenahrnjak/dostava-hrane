@@ -1,4 +1,4 @@
-package rs.ac.uns.acs.smpuos.GatewayServis.dto;
+package com.fooddelivery.userservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,14 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class CredentialsDto {
 	
-
-    private long id;
-    private String login;
-    private String token;
-    
+    private String username;
+    private char[] password;
 }
-
-
-

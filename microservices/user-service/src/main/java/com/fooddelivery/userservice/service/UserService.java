@@ -1,11 +1,14 @@
 package com.fooddelivery.userservice.service;
 
-import com.fooddelivery.userservice.dto.UserDto;
-import com.fooddelivery.userservice.model.User;
+import com.fooddelivery.userservice.dto.CredentialsDto;
+import com.fooddelivery.userservice.dto.UserDto; 
 
 public interface UserService {
 	
-    User register(UserDto newUser);
-    User findByUsername(String username);
+	UserDto registration(UserDto newUser);
+    UserDto findByUsername(String username);
+    UserDto findByEmail(String email);
+	UserDto validateToken(String token);
+	UserDto login(CredentialsDto credentialsDto);
 
 }

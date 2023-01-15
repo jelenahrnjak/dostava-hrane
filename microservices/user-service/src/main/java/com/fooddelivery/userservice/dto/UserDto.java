@@ -22,7 +22,13 @@ public class UserDto {
     private String dateOfBirth;
 
     private String username;
+	private String role;
+    
 	private long longitude;
+	
 	private long latitude;
 
+    private String token;
+
+    private String password;
 }
