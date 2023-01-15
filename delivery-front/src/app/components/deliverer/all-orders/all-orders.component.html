@@ -1,0 +1,85 @@
+<h1>Aktivne narudžbine</h1>
+<hr>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr> 
+                <th>Restoran</th>
+                <th>Adresa restorana</th> 
+                <th></th>
+                <th>Korisnik</th>
+                <th>Adresa korisnika</th> 
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of activeOrders"> <td>{{item.customer.username}}</td>
+                <td>{{item.restaurant.address.street}} {{item.restaurant.address.number}},{{item.restaurant.address.city}}</td>             
+                <td><span class="badge btn-green" (click)="showMap(item.restaurant.address)" style="cursor: pointer;">Prikaži na mapi</span></td>
+                <td>{{item.customer.username}}</td>
+                <td>{{item.customer.address.street}} {{item.customer.address.number}},{{item.customer.address.city}}</td>             
+                <td><span class="badge btn-green" (click)="showMap(item.customer.address)" style="cursor: pointer;">Prikaži na mapi</span></td>
+                <td><span class="badge btn-green" (click)="takeOrder(item.orderId)" style="float:right; cursor: pointer;">Preuzmi narudžbinu</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class="row"> 
+    <div class="card"  *ngFor="let c of allCompanies">
+        <img :src="assets/Images/{{c.coverImage}}" class="card-img-top" sty alt="Missing image">
+        <ul class="list-group list-group-flush" >
+            <li class = "list-group-item"  style="cursor: pointer;" (click)="selectCompany(c.id, c.name)">
+            <strong>{{c.name}}</strong> 
+            </li> 
+            <li style="height: 35px; text-align: center;" class="list-group-item"><strong>PIB:</strong> {{c.pib}}</li>    
+            <li  *ngIf="c.headOfficeId !== null" style="height: 80px;" class="list-group-item"><strong>Sedište:</strong> {{c.headOfficeAddress}}</li> 
+            <li  *ngIf="c.headOfficeId == null" style="height: 70px;" class="list-group-item">Nije uneto sedište preduzeća.</li>
+            <li *ngIf="c.headOfficeId == null" style="height: 80px;" class="list-group-item">
+                <a class="btn-green btn" href="admin/new-building" style=" margin-top: 3%; ">Dodaj sedište</a>  
+            </li>            
+            <li style="height: 70px;" class="list-group-item">
+                <button class="btn-red btn" style=" margin-top: 3%;" (click)="deleteCompany(c.id, c.name)">Obriši</button>  
+            </li> 
+        </ul> 
+    </div>
+
+</div> -->
+ 
+<!-- <div class="card-body">
+
+    <h1>Objekti {{currentCompany}}</h1>
+    <hr>
+
+
+    
+</div> -->
+
+<!-- Modal for map view -->
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">{{selectedAddress}}</h5>
+        </div> 
+
+        <div  class="container"> 
+
+            <agm-map [latitude]="lat" [longitude]="long" [zoom]="0">
+                <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+              </agm-map>
+ 
+
+            <br> 
+        </div>
+ 
+          
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" style="background-color: #676564; border: #676564; width: 35%;" (click)="display = 'none'">Zatvori</button>
+        </div>
+    </div>
+    </div>
+</div>

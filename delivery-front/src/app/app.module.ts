@@ -25,7 +25,10 @@ import { AuthService } from './services/core/auth.service';
 import { ConfigService } from './services/core/config.service';
 import { AuthguardService } from './guards/authguard.service';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { AllOrdersComponent } from './components/deliverer/all-orders/all-orders.component';
+import { AgmCoreModule } from '@agm/core';
 
+ 
 @NgModule({
   declarations: [
     AppComponent,   
@@ -33,7 +36,8 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
     SideBarComponent,
     LoginComponent,
     ErrorPageComponent,
-    SignUpComponent, 
+    SignUpComponent,
+    AllOrdersComponent, 
   ],
   imports: [
     CommonModule,
@@ -46,6 +50,9 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
     MatFormFieldModule,
     MatIconModule,
     NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey : 'AIzaSyCX5DQFPxHlQlEeFkkWzTJ41PU6FehGzVs'
+    })
   ],
   providers: [     
     {
