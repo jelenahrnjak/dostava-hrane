@@ -85,5 +85,29 @@ public class RestaurantController {
 			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
 		}	    
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getById(@PathVariable("id") String id) {
+		
+		try {
+			Restaurant result = service.getRestaurant(id);
+		    return new ResponseEntity<>(result, HttpStatus.OK);		
+		}
+		catch (Exception e){
+			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
+		}	    
+	}
+	
+	@GetMapping("/")
+	public ResponseEntity<?> getAll() {
+		
+		try {
+			List<Restaurant> result = service.getAll();
+		    return new ResponseEntity<>(result, HttpStatus.OK);		
+		}
+		catch (Exception e){
+			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
+		}	    
+	}
 
 }

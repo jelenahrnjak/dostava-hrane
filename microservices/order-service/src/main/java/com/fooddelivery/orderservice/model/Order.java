@@ -30,11 +30,12 @@ public class Order {
 	
 	Date creationDate;
 	Double totalPrice;
-	OrderStatus orderStatus;
+	String orderStatus;
 	
 	public Order(NewOrderDto newOrder) {
 		this.restaurantId = newOrder.getRestaurantId();
 		this.customerId = newOrder.getCustomerId();
 		this.orderItems = newOrder.getOrderItems();
+		this.orderStatus = "CREATED";
 	}
 }

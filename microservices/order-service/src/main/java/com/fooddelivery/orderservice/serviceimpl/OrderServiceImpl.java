@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService{
         Date currentDate = Date.from(clock.instant());
         
         order.setOrderId(UUID.randomUUID().toString());
-        order.setOrderStatus(OrderStatus.CREATED);
+        order.setOrderStatus(OrderStatus.CREATED.getOrderStatus());
         order.setDelivererId("none");
         order.setCreationDate(currentDate);
         return orderRepository.insert(order);
@@ -45,30 +45,30 @@ public class OrderServiceImpl implements OrderService{
 			throw new OrderTakenException(
 					"Order has already been taken by another deliverer.");
 		}
-		if(order.get().getOrderStatus().equals(OrderStatus.CANCELLED)) {
+		if(order.get().getOrderStatus().equals(OrderStatus.CANCELLED.getOrderStatus())) {
 			throw new OrderCancelledException(
 					"Sorry, the order has been cancelled by customer.");
 		}
 		order.get().setDelivererId(delivererId);
-		order.get().setOrderStatus(OrderStatus.DELIVERING);
+		order.get().setOrderStatus(OrderStatus.DELIVERING.getOrderStatus());
 		return orderRepository.save(order.get());
 	}
 	
 	@Override
 	public Order cancelOrder(String orderId) {
 		Optional<Order> order = orderRepository.findById(orderId);
-		if(!order.get().getOrderStatus().equals(OrderStatus.CREATED)) {
+		if(!order.get().getOrderStatus().equals(OrderStatus.CREATED.getOrderStatus())) {
 			throw new OrderDeliveryStartedException(
 					"Order cannot be cancelled, because delivery has already started");
 		};
-		order.get().setOrderStatus(OrderStatus.CANCELLED);
+		order.get().setOrderStatus(OrderStatus.CANCELLED.getOrderStatus());
 		return orderRepository.save(order.get());
 	}
 
 	@Override
 	public Order deliverOrder(String orderId) {
 		Optional<Order> order = orderRepository.findById(orderId);
-		order.get().setOrderStatus(OrderStatus.DELIVERED);
+		order.get().setOrderStatus(OrderStatus.DELIVERED.getOrderStatus());
 		return orderRepository.save(order.get());
 	}
 

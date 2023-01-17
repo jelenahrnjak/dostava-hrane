@@ -24,4 +24,20 @@ export class OrderService {
     }));
   }
 
+  findAllByCustomer(userId : any) { 
+
+    return this.apiService.get(this.config.order_url + '/customer/' + userId)
+    .pipe(map(orders => { 
+      return orders;
+    }));
+  }
+
+  findAllByDeliverer(delivererId : any) { 
+
+    return this.apiService.get(this.config.order_url + '/customer/' + delivererId)
+    .pipe(map(orders => { 
+      return orders;
+    }));
+  }
+
 }

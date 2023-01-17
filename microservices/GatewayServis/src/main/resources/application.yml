@@ -32,3 +32,7 @@ spring:
           uri: http://recommendation-service
           predicates:
             - Path=/recommendation-service/**
+        - id: restaurantModules
+          uri: http://restaurant-service
+          predicates:
+            - Path=/restaurants/**

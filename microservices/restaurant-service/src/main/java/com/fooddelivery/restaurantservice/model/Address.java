@@ -17,4 +17,6 @@ public class Address {
 	Integer number;
 	//mozda ce za mape trebati geog sirina i duzina ustvari
 
+	long latitude;
+	long longitude;
 }

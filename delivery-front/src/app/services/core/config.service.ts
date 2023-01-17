@@ -10,6 +10,7 @@ export class ConfigService {
   private _auth_url = this._api_url + '/auth';
   private _user_url = this._api_url + '/users';  
   private _order_url = this._api_url + '/order-service';  
+  private _restaurant_url = this._api_url + '/restaurants';  
  
 
   get auth_url(): string {
@@ -22,6 +23,10 @@ export class ConfigService {
 
   get order_url(): string {
     return this._order_url;
+  } 
+
+  get restaurant_url(): string {
+    return this._restaurant_url;
   } 
  
 }
