@@ -2,6 +2,7 @@ package com.fooddelivery.recommendationservice.service;
 
 import java.util.List;
 
+import com.fooddelivery.recommendationservice.model.Order;
 import com.fooddelivery.recommendationservice.model.Restaurant;
 
 public interface RecommendationService {

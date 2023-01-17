@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fooddelivery.recommendationservice.dto.RecentOrderDto;
 import com.fooddelivery.recommendationservice.dto.RestaurantPopularityDto;
+import com.fooddelivery.recommendationservice.model.Order;
 import com.fooddelivery.recommendationservice.model.Restaurant;
 import com.fooddelivery.recommendationservice.repository.OrderRepository;
 import com.fooddelivery.recommendationservice.repository.RestaurantRepository;
@@ -45,15 +45,27 @@ public class RecommendationServiceImpl implements RecommendationService{
 		
 		List<Restaurant> ret = new ArrayList<>();
 		
-		for(RecentOrderDto dto: orderRepo.getRecentOrdersForUser("user2", 5))
-			ret.add(dto.getRest());
-		
+		try {
+		for(Restaurant dto: orderRepo.getRecentOrdersForUser("user2", 5))
+			ret.add(dto);
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return ret;
 	}
+	
 	@Override
 	public List<Restaurant> getRestaurantRecommendationByType(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Restaurant> result = new ArrayList<>();
+		
+		for(Restaurant rest: restRepo.getRestaurantsFromUserOrdes(userId)) {
+			for(Restaurant sameTypeRest: restRepo.getSameTypeRestaurants(rest.getRestId())) {
+				if (!result.contains(sameTypeRest)) result.add(sameTypeRest);
+			}
+		}
+		return result;
 	}
 	
 

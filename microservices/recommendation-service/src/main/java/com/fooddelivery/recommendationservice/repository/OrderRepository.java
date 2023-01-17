@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 
-import com.fooddelivery.recommendationservice.dto.RecentOrderDto;
 import com.fooddelivery.recommendationservice.model.Order;
+import com.fooddelivery.recommendationservice.model.Restaurant;
 import com.fooddelivery.recommendationservice.model.User;
 
 public interface OrderRepository extends Neo4jRepository<Order,String> {
@@ -15,6 +15,6 @@ public interface OrderRepository extends Neo4jRepository<Order,String> {
 	List<Order> findAllByStartNode(String userId);
 	List<Order> findAllByUser(User user);
 	
-	@Query("MATCH (rest:Restaurant)<-[r:RESTAURANT]-(o:Order)-[USER]->(u:User {userId: $0}) return distinct rest,o.orderDate as lastOrderDate order by lastOrderDate desc limit $1")
-	List<RecentOrderDto> getRecentOrdersForUser(String userId, int limit);
+	@Query("MATCH (rest:Restaurant)<-[r:RESTAURANT]-(o:Order)-[USER]->(u:User {userId: $0}) return distinct rest limit $1")
+	List<Restaurant> getRecentOrdersForUser(String userId, int limit);
 }

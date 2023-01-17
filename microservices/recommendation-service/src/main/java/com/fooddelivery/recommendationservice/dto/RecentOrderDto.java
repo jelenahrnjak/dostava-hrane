@@ -1,9 +1,9 @@
 package com.fooddelivery.recommendationservice.dto;
 
-import java.time.LocalDate;
+
+import java.sql.Timestamp;
 
 import org.neo4j.ogm.annotation.typeconversion.Convert;
-import org.neo4j.ogm.typeconversion.DateStringConverter;
 
 import com.fooddelivery.recommendationservice.model.Restaurant;
 
@@ -20,6 +20,5 @@ import lombok.Setter;
 public class RecentOrderDto {
 	
 	Restaurant rest;
-	@Convert(DateStringConverter.class)
-	LocalDate lastOrderDate;
+	Object lastOrderDate;
 }
