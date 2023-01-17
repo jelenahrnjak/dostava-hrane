@@ -27,6 +27,7 @@ import { AuthguardService } from './guards/authguard.service';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AllOrdersComponent } from './components/deliverer/all-orders/all-orders.component';
 import { AgmCoreModule } from '@agm/core';
+import { MyOrdersComponent } from './components/customer/my-orders/my-orders.component';
 
  
 @NgModule({
@@ -37,7 +38,8 @@ import { AgmCoreModule } from '@agm/core';
     LoginComponent,
     ErrorPageComponent,
     SignUpComponent,
-    AllOrdersComponent, 
+    AllOrdersComponent,
+    MyOrdersComponent, 
   ],
   imports: [
     CommonModule,

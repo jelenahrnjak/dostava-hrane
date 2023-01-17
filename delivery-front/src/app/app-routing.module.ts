@@ -38,6 +38,15 @@ const routes: Routes = [
     //   expectedRole: 'DELIVERER'  
     // },
 
+  },
+  {
+    path: 'active-orders',
+    component: AllOrdersComponent, 
+    // canActivate: [RoleGuard],  
+    // data: { 
+    //   expectedRole: 'CUSTOMER'  
+    // },
+
   }, 
  
 ];
