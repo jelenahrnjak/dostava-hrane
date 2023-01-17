@@ -17,4 +17,7 @@ public interface OrderRepository extends Neo4jRepository<Order,String> {
 	
 	@Query("MATCH (rest:Restaurant)<-[r:RESTAURANT]-(o:Order)-[USER]->(u:User {userId: $0}) return distinct rest limit $1")
 	List<Restaurant> getRecentOrdersForUser(String userId, int limit);
+	
+	@Query("MATCH (rest:Restaurant)<-[r:RESTAURANT]-(o:Order)-[USER]->(u:User {userId: $0}) return o order by o.orderDate desc")
+	List<Order> getUserOrdersSortedByDate(String userId);
 }

@@ -2,7 +2,7 @@ package com.fooddelivery.recommendationservice.serviceimpl;
 
 import java.time.Clock;
 import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,35 +71,23 @@ public class InsertService {
 		restTypeRepo.createTypeRelationship(dto.getRestId(), dto.getType());
 	}
 	
-	public List<Order> insertNewOrder(OrderDto newOrder) {
+	public Order insertNewOrder(OrderDto newOrder) {
 		
-				
-		try {
 		User user = userRepo.findByUserId(newOrder.getUserId());
 		Restaurant rest = restRepo.findById(newOrder.getRestId()).get();
 		
-		System.out.println("Dobavljeni user je " + user.getUserId());
-		System.out.println("Dobavljenirest je " + rest.getRestId());
-		
-		
+
         Clock clock = Clock.systemDefaultZone();
         Date currentDate = Date.from(clock.instant());
 		
 		Order order = new Order();
-		order.setOrderId("7");
+		order.setOrderId(UUID.randomUUID().toString());
 		order.setUser(user);
 		order.setRestaurant(rest);
 		order.setOrderDate(currentDate);
 		
 		orderRepo.save(order);
-		
-		List<Order> ret = orderRepo.findAllByStartNode(user.getUserId());
-		return ret;
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-			return null;
-		}
+		return order;
 	}
 	
 	

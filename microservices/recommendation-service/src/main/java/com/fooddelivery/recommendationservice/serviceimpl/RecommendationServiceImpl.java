@@ -44,13 +44,11 @@ public class RecommendationServiceImpl implements RecommendationService{
 	public List<Restaurant> getRestaurantsByRecentOrders(String userId) {
 		
 		List<Restaurant> ret = new ArrayList<>();
+		int listLength = 5;
 		
-		try {
-		for(Restaurant dto: orderRepo.getRecentOrdersForUser("user2", 5))
-			ret.add(dto);
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
+		for(Order o: orderRepo.getUserOrdersSortedByDate(userId)) {			
+			if(!ret.contains(restRepo.findRestByOrderId(o.getOrderId())) && ret.size()<listLength) 
+				ret.add(restRepo.findRestByOrderId(o.getOrderId()));			
 		}
 		return ret;
 	}

@@ -23,4 +23,7 @@ public interface RestaurantRepository extends Neo4jRepository<Restaurant,String>
 	
 	@Query("match (sameTypeRest: Restaurant)-[i:IF_OF_TYPE]->(RestaurantType)<-[ii:IF_OF_TYPE]-(rest:Restaurant {restId:$0}) return sameTypeRest")
 	List<Restaurant> getSameTypeRestaurants(String restId);
+	
+	@Query("MATCH (rest:Restaurant)<-[r:RESTAURANT]-(o:Order {orderId: $0}) return rest")
+	Restaurant findRestByOrderId(String orderId);
 }

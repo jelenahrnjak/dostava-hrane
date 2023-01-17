@@ -71,7 +71,6 @@ public class InsertController {
 	public ResponseEntity<?> createOrder(@RequestBody OrderDto newOrder) {
 		
 		try {
-			//service.insertNewOrder(newOrder);
 		    return new ResponseEntity<>(insertService.insertNewOrder(newOrder), HttpStatus.CREATED);		
 		}
 		catch (Exception e){
