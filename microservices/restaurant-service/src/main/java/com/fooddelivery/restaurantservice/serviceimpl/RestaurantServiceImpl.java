@@ -33,4 +33,10 @@ public class RestaurantServiceImpl implements RestaurantService{
 		return rest.get();
 	}
 
+	@Override
+	public List<Restaurant> getAll() {
+		List<Restaurant> rest = repo.findAll();
+		return rest;
+	}
+
 }
