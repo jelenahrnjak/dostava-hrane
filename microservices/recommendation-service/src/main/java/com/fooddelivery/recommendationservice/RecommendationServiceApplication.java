@@ -1,4 +1,4 @@
-package com.example.recommendationservice;
+package com.fooddelivery.recommendationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
