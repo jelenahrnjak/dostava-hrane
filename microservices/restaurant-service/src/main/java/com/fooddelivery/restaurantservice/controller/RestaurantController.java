@@ -1,5 +1,6 @@
 package com.fooddelivery.restaurantservice.controller;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fooddelivery.restaurantservice.dto.NewMealDto;
 import com.fooddelivery.restaurantservice.dto.NewRestaurantDto;
+import com.fooddelivery.restaurantservice.dto.RestaurantDto;
+import com.fooddelivery.restaurantservice.model.Meal;
 import com.fooddelivery.restaurantservice.model.Restaurant;
 import com.fooddelivery.restaurantservice.service.RestaurantService;
 import com.fooddelivery.restaurantservice.service.SearchService;
@@ -38,11 +42,24 @@ public class RestaurantController {
 	    
 	}
 	
+	@PostMapping("/meal")
+	public ResponseEntity<?> addMealToRestaurant(@RequestBody NewMealDto meal, BindingResult bindingResult) {
+		
+		try {
+			Meal newMeal = service.addNewMeal(meal);
+		    return new ResponseEntity<>(newMeal, HttpStatus.CREATED);		
+		}
+		catch (Exception e){
+			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
+		}
+	    
+	}
+	
 	@GetMapping("/search/name/{name}")
 	public ResponseEntity<?> searchByName(@PathVariable("name") String name) {
 		
 		try {
-			List<Restaurant> result = searchService.searchByRestaurantName(name);
+			List<RestaurantDto> result = searchService.searchByRestaurantName(name);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){
@@ -54,7 +71,7 @@ public class RestaurantController {
 	public ResponseEntity<?> searchByType(@PathVariable("type") String type) {
 		
 		try {
-			List<Restaurant> result = searchService.searchByRestaurantType(type);
+			List<RestaurantDto> result = searchService.searchByRestaurantType(type);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){
@@ -66,7 +83,7 @@ public class RestaurantController {
 	public ResponseEntity<?> searchByMealName(@PathVariable("name") String name) {
 		
 		try {
-			List<Restaurant> result = searchService.searchByMealName(name);
+			Collection<RestaurantDto> result = searchService.searchByMealName(name);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){
@@ -78,7 +95,7 @@ public class RestaurantController {
 	public ResponseEntity<?> searchByMealType(@PathVariable("type") String type) {
 		
 		try {
-			List<Restaurant> result = searchService.searchByMealType(type);
+			Collection<RestaurantDto> result = searchService.searchByMealType(type);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){
@@ -90,7 +107,7 @@ public class RestaurantController {
 	public ResponseEntity<?> getById(@PathVariable("id") String id) {
 		
 		try {
-			Restaurant result = service.getRestaurant(id);
+			RestaurantDto result = service.getRestaurant(id);
 		    return new ResponseEntity<>(result, HttpStatus.OK);		
 		}
 		catch (Exception e){
@@ -109,5 +126,7 @@ public class RestaurantController {
 			return new ResponseEntity<>("Something went wrong, sorry!", HttpStatus.I_AM_A_TEAPOT);
 		}	    
 	}
+	
+	
 
 }

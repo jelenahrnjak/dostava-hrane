@@ -26,7 +26,6 @@ public class Restaurant {
 	String description;
 	Address address;
 	
-	List<Meal> meals;
 	List<String> types;
 	
 	public Restaurant(NewRestaurantDto newRest) {

@@ -16,4 +16,6 @@ public interface MealRepository extends MongoRepository<Meal, String>{
 	
 	@Query("{ 'mealType': { '$regex': ?0, '$options': 'i' } }")
 	List<Meal> findByMealType(String type);
+	
+	List<Meal> findAllByRestautantId(String restId);
 }

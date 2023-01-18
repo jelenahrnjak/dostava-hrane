@@ -16,6 +16,7 @@ public interface RestaurantRepository extends MongoRepository<Restaurant, String
 	
 	@Query("{'types': { '$in': [ { '$regex': ?0, '$options': 'i' } ] } }")
 	List<Restaurant> findByRestaurantType(String type);
-
+	
+	Restaurant findByRestautantId(String id);
 
 }
