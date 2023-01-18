@@ -20,7 +20,7 @@
                 <td>{{item.restaurant.address.street}} {{item.restaurant.address.number}},{{item.restaurant.address.city}}</td>             
                 <td><span class="badge btn-green" (click)="showMap(item.restaurant.address)" style="cursor: pointer;">Prikaži na mapi</span></td>
                 <td>{{item.customer.username}}</td>
-                <td>{{item.customer.address.street}} {{item.customer.address.number}},{{item.customer.address.city}}</td>             
+                <td>{{item.customer.address}}</td>             
                 <td><span class="badge btn-green" (click)="showMap(item.customer.address)" style="cursor: pointer;">Prikaži na mapi</span></td>
                 <td><span class="badge btn-green" (click)="takeOrder(item.orderId)" style="float:right; cursor: pointer;">Preuzmi narudžbinu</span></td>
             </tr>

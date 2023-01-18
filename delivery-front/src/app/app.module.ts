@@ -28,6 +28,8 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AllOrdersComponent } from './components/deliverer/all-orders/all-orders.component';
 import { AgmCoreModule } from '@agm/core';
 import { MyOrdersComponent } from './components/customer/my-orders/my-orders.component';
+import { RestaurantViewComponent } from './components/restaurant-view/restaurant-view.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
  
 @NgModule({
@@ -39,7 +41,8 @@ import { MyOrdersComponent } from './components/customer/my-orders/my-orders.com
     ErrorPageComponent,
     SignUpComponent,
     AllOrdersComponent,
-    MyOrdersComponent, 
+    MyOrdersComponent,
+    RestaurantViewComponent, 
   ],
   imports: [
     CommonModule,
@@ -51,9 +54,10 @@ import { MyOrdersComponent } from './components/customer/my-orders/my-orders.com
     ReactiveFormsModule, 
     MatFormFieldModule,
     MatIconModule,
+    Ng2SearchPipeModule,
     NgbModule,
     AgmCoreModule.forRoot({
-      apiKey : 'AIzaSyCX5DQFPxHlQlEeFkkWzTJ41PU6FehGzVs'
+      apiKey : ''
     })
   ],
   providers: [     

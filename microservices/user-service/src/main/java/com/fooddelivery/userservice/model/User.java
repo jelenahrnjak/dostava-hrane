@@ -1,6 +1,7 @@
 package com.fooddelivery.userservice.model;
 import com.fooddelivery.userservice.dto.UserDto;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

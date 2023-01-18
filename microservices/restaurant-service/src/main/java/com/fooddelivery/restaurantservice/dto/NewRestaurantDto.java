@@ -15,6 +15,7 @@ public class NewRestaurantDto {
 	
 	String name;
 	String description;
+	String image;
 	List<String> types;
 
 }

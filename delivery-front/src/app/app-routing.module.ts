@@ -5,6 +5,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { ErrorPageComponent } from './components/core/error-page/error-page.component'; 
 import { AllOrdersComponent } from './components/deliverer/all-orders/all-orders.component';
+import { RestaurantViewComponent } from './components/restaurant-view/restaurant-view.component';
+
 
 import { AuthentificationGuard } from './guards/authentification.guard'
 import { RoleguardService as RoleGuard } from './guards/roleguard.service';
@@ -40,8 +42,17 @@ const routes: Routes = [
 
   },
   {
-    path: 'active-orders',
+    path: 'my-orders',
     component: AllOrdersComponent, 
+    // canActivate: [RoleGuard],  
+    // data: { 
+    //   expectedRole: 'CUSTOMER'  
+    // },
+
+  }, 
+  {
+    path: 'restaurants',
+    component: RestaurantViewComponent, 
     // canActivate: [RoleGuard],  
     // data: { 
     //   expectedRole: 'CUSTOMER'  

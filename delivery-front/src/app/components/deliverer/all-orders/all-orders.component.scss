@@ -22,7 +22,7 @@
 }
 
 .card:hover{
-  background: linear-gradient(to bottom, #04664ce7 , #00553ee3)
+  background: linear-gradient(to bottom, #ffc144e5 , #ffc244)
 }
  
 strong{
@@ -68,16 +68,16 @@ input[type=number] {
 }
  
 .btn-green{
-  color: #fff698;
-  background-color: #00553e;
+  color: #00a082;
+  background-color: #ffc244;
 } 
 
-.btn-green:hover{
-  background-color: #076b50;
-}
+.btn-green:hover{ 
+  background-color: #ffc244; 
+}rgba(255, 193, 68, 0.938)
 
 .btn-red{
-  color: #fff698;
+  color: #00a082;
   background-color: #b7222f; 
 } 
 

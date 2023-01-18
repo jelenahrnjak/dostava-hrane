@@ -1,0 +1,49 @@
+
+    <div class="dropdown" style="margin-left: 30%; margin-top: 1rem; width: 180rem; ">
+        <select class="btn2 btn-secondary dropdown-toggle"  style="text-align: center;"
+          (change)="clear()" [(ngModel)]="selectedSearchType">
+            <option [value]=0 selected disabled>Po čemu želite pretragu?</option>
+            <option [value] =1>Pretraga po nazivu restorana</option>
+            <option [value]=2 >Pretraga po vrsti restorana</option>
+            <option [value]=3 >Pretraga po nazivu obroka</option>
+            <option [value]=4 >Pretraga po vrsti obroka</option>
+        </select>
+        
+      </div> 
+
+    <div *ngIf="selectedSearchType != 0" class="input-group rounded" style="margin: 10px; margin-left: 3%;  margin-top: 1%;"> 
+        <input type="text" class="input-border" [(ngModel)]="searchString" placeholder="Pretraži..."/>  
+    </div> 
+
+    <div *ngIf="selectedSearchType != 0" style=" margin-left:30%; margin-top: 1%;">   
+      <button class="btn" (click)="clear()">Resetuj</button>  
+      <button class=" btn" style="margin-left: 9%;" type="submit" (click)="search()">Pretraži</button> 
+      
+      <!-- <select class="btn dropdown-toggle"  style="margin-left: 9%;"  (change)="changeSorting()" formControlName="sorting">
+         <option [value]=0 selected disabled>Sorting</option>
+         <option [value] = 1>Po nazivu</option>
+         <option [value]=2 >By rating</option> 
+         <option [value]=3 >By name</option> 
+     </select> -->
+    </div> 
+
+    
+    <div>
+    <div class="row" > 
+ 
+            <div class="card"  *ngFor="let c of restaurants | filter : searchString">
+                <img :src="assets/images/restorani/{{c.image}}" class="card-img-top" sty alt="Missing image">
+                <ul class="list-group list-group-flush">
+                <li class = "list-group-item">
+                <strong>{{c.name}}</strong>
+                </li> 
+                <li style="height: 60px;" class="list-group-item">{{c.description}}</li> 
+                <li style="height: 40px;" class="list-group-item">{{c.address.street}} {{c.address.number}},{{c.address.city}}</li> 
+                <li class="list-group-item">
+                  <button class="small-btn" (click)="selectRestaurant(c.restaurantId)">Pregled ponude</button>  
+                </li>
+                </ul>   
+        </div>
+    </div>
+    
+    </div>  
