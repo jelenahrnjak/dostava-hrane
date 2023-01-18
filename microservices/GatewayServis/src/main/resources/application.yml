@@ -8,18 +8,25 @@ eureka:
       
 spring:
   application:
-    name: gateway-api
+    name: gateway-api 
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedHeaders: "*" #mozda obrisati?
+            allowedMethods:
+            - GET
+            - POST
+            - DELETE
+            - PUT
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: userModules
-          uri: lb://user-service
-          predicates:
-            - Path=/users/**
+
         - id: load-balancer-servis
           uri: http://load-balancer-servis
           predicates:
@@ -28,11 +35,22 @@ spring:
           uri: http://order-service
           predicates:
             - Path=/order-service/**
+          #filters:
+           # - AuthFilter
         - id: recommendationModules
           uri: http://recommendation-service
           predicates:
             - Path=/recommendation-service/**
+          #filters:
+            #- AuthFilter
         - id: restaurantModules
           uri: http://restaurant-service
           predicates:
             - Path=/restaurants/**
+          #filters:
+            #- AuthFilter
+            
+        - id: userModules
+          uri: http://user-service
+          predicates:
+            - Path=/user-service/**
