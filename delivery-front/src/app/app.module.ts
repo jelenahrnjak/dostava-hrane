@@ -30,6 +30,7 @@ import { AgmCoreModule } from '@agm/core';
 import { MyOrdersComponent } from './components/customer/my-orders/my-orders.component';
 import { RestaurantViewComponent } from './components/restaurant-view/restaurant-view.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
  
 @NgModule({
@@ -42,7 +43,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SignUpComponent,
     AllOrdersComponent,
     MyOrdersComponent,
-    RestaurantViewComponent, 
+    RestaurantViewComponent,
+    RestaurantComponent, 
   ],
   imports: [
     CommonModule,

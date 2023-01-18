@@ -75,10 +75,7 @@ export class RestaurantViewComponent implements OnInit {
  
 
     selectRestaurant(id : any){
-     
-      alert(id)
-      
-      //this.router.navigate(['meals/' + id]);
+     this.router.navigate(['restaurant/' + id]);
     } 
 
 

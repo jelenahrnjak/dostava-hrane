@@ -1,0 +1,27 @@
+
+    <div>
+    <div class="row" > 
+ 
+            <div class="card"  *ngFor="let c of meals">
+                <img :src="assets/images/restorani/petrus.jpg" class="card-img-top" sty alt="Missing image">
+                <ul class="list-group list-group-flush">
+                <li class = "list-group-item">
+                <strong>{{c.name}}</strong>
+                </li> 
+                <li style="height: 60px;" class="list-group-item">{{c.description}}</li> 
+                <li style="height: 40px;" class="list-group-item">{{c.price}}</li> 
+                <li class="list-group-item">
+                    <button (click) = "c.count =c.count - 1">
+                        <i class="fa fa-arrow-down"></i> 
+                      </button>
+                      
+                  <input type="number" style="width: 50%;" [(ngModel)]="c.count"> 
+                  <button (click) = "c.count = c.count + 1">
+                      <i class="fa fa-arrow-up"></i> 
+                    </button>
+                </li>
+                </ul>   
+        </div>
+    </div>
+    
+    </div>  

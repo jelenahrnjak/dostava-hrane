@@ -6,6 +6,7 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { ErrorPageComponent } from './components/core/error-page/error-page.component'; 
 import { AllOrdersComponent } from './components/deliverer/all-orders/all-orders.component';
 import { RestaurantViewComponent } from './components/restaurant-view/restaurant-view.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 
 import { AuthentificationGuard } from './guards/authentification.guard'
@@ -53,6 +54,15 @@ const routes: Routes = [
   {
     path: 'restaurants',
     component: RestaurantViewComponent, 
+    // canActivate: [RoleGuard],  
+    // data: { 
+    //   expectedRole: 'CUSTOMER'  
+    // },
+
+  }, 
+  {
+    path: 'restaurant/:id',
+    component: RestaurantComponent, 
     // canActivate: [RoleGuard],  
     // data: { 
     //   expectedRole: 'CUSTOMER'  
