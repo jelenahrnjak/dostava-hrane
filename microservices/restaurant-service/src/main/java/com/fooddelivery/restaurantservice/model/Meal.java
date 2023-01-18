@@ -23,5 +23,6 @@ public class Meal {
 	String description;
 	String mealType;
 	Double price;
+	String image;
 	
 }

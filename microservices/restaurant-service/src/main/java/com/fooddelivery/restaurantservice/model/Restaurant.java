@@ -24,6 +24,7 @@ public class Restaurant {
 	
 	String name;
 	String description;
+	String image;
 	Address address;
 	
 	List<String> types;
@@ -31,6 +32,7 @@ public class Restaurant {
 	public Restaurant(NewRestaurantDto newRest) {
 		this.name = newRest.getName();
 		this.description = newRest.getDescription();
+		this.image = newRest.getImage();
 		this.types = newRest.getTypes();
 	}
 	

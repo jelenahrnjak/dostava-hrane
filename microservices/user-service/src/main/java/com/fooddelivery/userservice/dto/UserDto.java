@@ -23,5 +23,11 @@ public class UserDto {
 
     private String username;
 	
-
+    private String password;
+    
+    private String address;
+    private long longitude;
+    private long latitude;
+    
+    private String token;
 }

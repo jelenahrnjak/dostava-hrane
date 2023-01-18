@@ -24,17 +24,7 @@ public class GatewayServisKontroler {
 	public Mono<String> korisnikServisCircuitBreaker() {
 		return Mono.just("Кориснички сервис биће ускоро доступан.");
 	}
-	
-	@PostMapping("/register")
-	public String resgisterUser(@RequestBody UserDto user) {
-	    
-		RestTemplate restTemplate = new RestTemplate();
-		
-		String response = restTemplate.postForObject(
-			    "http://localhost:8081/register", user,
-			    String.class);
-		return response;
-	}
+
 	
 
 }
