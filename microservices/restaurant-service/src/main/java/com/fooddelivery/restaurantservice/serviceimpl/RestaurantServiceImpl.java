@@ -54,7 +54,8 @@ public class RestaurantServiceImpl implements RestaurantService{
 						newMeal.getMealName(),
 						newMeal.getDescription(),
 						newMeal.getMealType(),
-						newMeal.getMealPrice());
+						newMeal.getMealPrice(),
+						"image.png");
 		
 		mealRepo.save(meal);
 		return meal;
