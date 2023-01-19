@@ -36,6 +36,7 @@ public class Order {
 		this.restaurantId = newOrder.getRestaurantId();
 		this.customerId = newOrder.getCustomerId();
 		this.orderItems = newOrder.getOrderItems();
+		this.totalPrice = newOrder.getTotalPrice();
 		this.orderStatus = "CREATED";
 	}
 }

@@ -3,45 +3,44 @@
 
 <div class="row"> 
     <div class="card"  *ngFor="let c of activeOrders">
-        <img :src="assets/Images/{{c.restaurant.image}}" class="card-img-top" sty alt="Missing image">
+        <img *ngIf="c.restaurant" :src="assets/images/restorani/{{c.restaurant.image}}" class="card-img-top" sty alt="Missing image">
         <ul class="list-group list-group-flush" >
-            <li style="height: 35px; text-align: center;" class="list-group-item"><strong>Narudžbina iz restorana </strong> {{c.restaurant.name}}</li>    
-            <li class = "list-group-item"  style="cursor: pointer;" (click)="selectOrder(c)">
+            <li *ngIf="c.restaurant" style="height: 35px; text-align: center;" class="list-group-item">Narudžbina iz restorana</li>    
+            <li  *ngIf="c.restaurant" class = "list-group-item"  style="cursor: pointer;" (click)="selectOrder(c)">
             <strong>{{c.restaurant.name}}</strong> 
             </li> 
-            <li  style="height: 80px;" class="list-group-item"><strong>Cena:</strong> {{c.totalPrice}}</li> 
+            <li  style="height: 80px;" class="list-group-item"><strong>Cena:</strong> {{c.totalPrice}} $</li> 
             <li  style="height: 70px;" class="list-group-item"><strong>Status:</strong> {{c.orderStatus}}</li> 
             <li style="height: 70px;" class="list-group-item">
-                <button class="btn-green btn" style=" margin-top: 3%;" (click)="selectOrder(c)">Detalji</button>  
-                <button class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(c.orderId)" disabled="c.orderStatus != 'CREATED'">Otkaži</button>  
+                <button class="btn-green btn" style=" margin-top: 3%; margin-right: 3%;" (click)="selectOrder(c); display = 'display'">Detalji</button>  
+                <button class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(c.orderId);" [disabled]="c.orderStatus != 'CREATED'">Otkaži</button>  
             </li> 
         </ul> 
     </div>
 
+ 
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Porudžbina broj: {{currentOrder.orderId}}</h5>
+            </div> 
+    
+            <div  class="container"> 
+    
+     
+    
+                <br> 
+            </div>
+     
+              
+            <div class="modal-footer">
+                <button class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(currentOrder.orderId)" disabled="c.orderStatus != 'CREATED'">Otkaži</button>  
+    
+                <button type="button" class="btn btn-primary" style="background-color: #676564; border: #676564; width: 35%;" (click)="display = 'none'">Zatvori</button>
+            </div>
+        </div>
+        </div>
+    </div>
 </div> 
   
-
-<!-- Modal for map view -->
-<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" style="background-color: rgba(0, 0, 0, 0.5);">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" >Porudžbina broj: {{currentOrder.orderId}}</h5>
-        </div> 
-
-        <div  class="container"> 
-
- 
-
-            <br> 
-        </div>
- 
-          
-        <div class="modal-footer">
-            <button class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(currentOrder.orderId)" disabled="c.orderStatus != 'CREATED'">Otkaži</button>  
-
-            <button type="button" class="btn btn-primary" style="background-color: #676564; border: #676564; width: 35%;" (click)="display = 'none'">Zatvori</button>
-        </div>
-    </div>
-    </div>
-</div>

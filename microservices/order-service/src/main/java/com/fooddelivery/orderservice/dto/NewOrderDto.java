@@ -17,6 +17,7 @@ public class NewOrderDto {
 
 	String customerId;
 	String restaurantId;
+	Double totalPrice;
 
 	List<OrderItem> orderItems;
 }

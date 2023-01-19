@@ -16,6 +16,7 @@ export class MyOrdersComponent implements OnInit {
   activeOrders : Order[] = [] 
   currentOrder : any = ""
   display = 'none'
+  show = false;
   
   
   constructor(
@@ -25,21 +26,27 @@ export class MyOrdersComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getAllActiveOrders()
+    this.getAllActiveOrders() 
+    
 
-    var i = 0;
-    this.activeOrders.forEach(element => {
-
-      this.restaurantService.findById(element.restaurant).subscribe((data : Restaurant) => {
-        this.activeOrders[i].restaurant = data;
-      })
-    });
-
-    i++;
+    setTimeout(() => {this.getRestaurants()}, 200);   
   }
 
+  getRestaurants(){ 
+    this.activeOrders.forEach((element : Order, index : any) => {
+
+      this.restaurantService.findById(element.restaurantId).subscribe((data : Restaurant) => {
+        this.activeOrders[index].restaurant = data;
+      })
+    });
+ 
+    console.dir(this.activeOrders) 
+    this.show= true
+     
+  }
   selectOrder(order : any){
     this.currentOrder = order
+    this.display = 'display'
   }
 
   getAllActiveOrders(){
@@ -51,8 +58,8 @@ export class MyOrdersComponent implements OnInit {
     }); 
   }
    
-  cancelOrder(orderId : string){
-    alert(orderId)
+  cancelOrder(orderId : string){ 
+    this.orderService.cancelOrder(orderId).subscribe(); 
   }
 
 
