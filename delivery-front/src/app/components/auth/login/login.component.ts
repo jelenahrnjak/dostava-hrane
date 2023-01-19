@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => { 
         const role = sessionStorage.getItem("role"); 
         switch(role){
-          case "USER":
+          case "CUSTOMER":
             this.router.navigate(["user"]); 
             break;
           case "DELIVERER":
@@ -50,5 +50,5 @@ export class LoginComponent implements OnInit {
           this.toastr.error('Pogrešno korisničko ime ili lozinka')
         });
   }
-
+ 
 }

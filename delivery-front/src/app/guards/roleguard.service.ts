@@ -28,7 +28,7 @@ export class RoleguardService {
 
 
       switch(role){
-        case "USER":
+        case "CUSTOMER":
           this.router.navigate(["user"]); 
           break;
         case "DELIVERER":

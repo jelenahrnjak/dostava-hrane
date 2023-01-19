@@ -17,7 +17,7 @@ export class SideBarComponent implements OnInit {
 
   goToHomePage(){
     switch(this.role){
-      case "USER":
+      case "CUSTOMER":
         this.router.navigate(["user"]); 
         break;
       case "DELIVERER":

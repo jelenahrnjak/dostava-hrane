@@ -19,6 +19,7 @@ import com.fooddelivery.usersservice.model.User;
 import com.fooddelivery.usersservice.service.UserService;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -30,12 +31,9 @@ public class UserServiceImpl implements UserService{
 	
     @Autowired
     private UserRepository userRepository;
-     
+    @Autowired
+    private UserMapper userMapper; 
     
-    @Autowired(required = false)
-    private  UserMapper userMapper;
-
-
     @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 	
@@ -52,25 +50,35 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public UserDto findByUsername(String username) {  
-        return userMapper.toUserDtoWithToken(userRepository.findByUsername(username), null);
+		User ret = userRepository.findByUsername(username);
+		if(ret == null) {
+			return null;
+		}
+		return userMapper.toUserDtoWithToken(ret, null);
 	}
 
 	@Override
 	public UserDto findByEmail(String email) {  
-        return userMapper.toUserDtoWithToken(userRepository.findByEmail(email), null);
+		User ret = userRepository.findByEmail(email);
+		if(ret == null) {
+			return null;
+		}
+        return userMapper.toUserDtoWithToken(ret, null);
 	}
 
 	@Override
-	public User findById(String id) {
-		return userRepository.findById(id).get();
+	public UserDto findById(String id) {
+		User ret = userRepository.findById(id).get();
+		if(ret == null) {
+			return null;
+		}
+		return userMapper.toUserDtoWithToken(ret, null);
 	}
 	
 	public UserDto validateToken(String token) {
-		 String username = Jwts.parser()
-	                .setSigningKey(secretKey)
-	                .parseClaimsJws(token)
-	                .getBody()
-	                .getSubject();
+		
+		
+		 String username = getUsernameFromToken(token);
 	        Optional<User> userOptional = Optional.of(userRepository.findByUsername(username));
 
 	        if (userOptional.isEmpty()) {
@@ -79,34 +87,71 @@ public class UserServiceImpl implements UserService{
 	        }
 
 	        User user = userOptional.get();
+	        if(user == null) {
+	        	return null;
+	        }
 	        return userMapper.toUserDtoWithToken(user, createToken(user));
 	}
+	
+	
+    public String getUsernameFromToken(String token) {
+        String username;
 
-   private String createToken(User user) {
-       Claims claims = Jwts.claims().setSubject(user.getUsername());//TODO: dodaj i rolu
+        try {
+            final Claims claims = this.getAllClaimsFromToken(token);
+            username = claims.getSubject();
+        } catch (ExpiredJwtException ex) {
+            throw ex;
+        } catch (Exception e) {
+            username = null;
+        }
 
+        return username;
+    }
+    
+    private Claims getAllClaimsFromToken(String token) { 
+        Claims claims;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey("somesecret")
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (ExpiredJwtException ex) {
+            throw ex;
+        } catch (Exception e) {
+            claims = null;
+        } 
+
+        return claims;
+    }
+
+   private String createToken(User user) { 
        Date now = new Date();
        Date validity = new Date(now.getTime() + 3600000); // 1 hour
 
        return Jwts.builder()
-               .setClaims(claims)
-               .setIssuedAt(now)
+               .setIssuer("user-service")
+               .setSubject(user.getUsername())
+               .claim("role",user.getRole())
+               .setAudience("web")
+               .setIssuedAt(new Date())
                .setExpiration(validity)
-//               .setRole()
-               .signWith(SignatureAlgorithm.HS256, secretKey)
-               .compact();
+               .signWith(SignatureAlgorithm.HS512, "somesecret").compact();
    }
 
 	@Override
-	public UserDto login(CredentialDTO credentialsDto) {
-		 var user = Optional.of(userRepository.findByUsername(credentialsDto.getUsername()))
-	                .orElseThrow(() -> new AppException("User not found", HttpStatus.NOT_FOUND));
-
+	public String login(CredentialDTO credentialsDto) {
+		 	User user = userRepository.findByUsername(credentialsDto.getUsername()); 
+		 	
+		 	if(user == null) {
+		 		return null;
+		 	}
 	        if (credentialsDto.getPassword().equals(user.getPassword())) {
-	             return userMapper.toUserDtoWithToken(user, createToken(user));
+	             return createToken(user);
 	         }
 
-	        throw new AppException("Invalid password", HttpStatus.BAD_REQUEST);
+	        //throw new AppException("Invalid password", HttpStatus.BAD_REQUEST);
+	        return null;
 	}
 
 

@@ -12,5 +12,5 @@ import lombok.Setter;
 public class CredentialDTO {
 
     private String username;
-    private char[] password;
+    private String password;
 }

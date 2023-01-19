@@ -36,37 +36,37 @@ const routes: Routes = [
   {
     path: 'active-orders',
     component: AllOrdersComponent, 
-    // canActivate: [RoleGuard],  
-    // data: { 
-    //   expectedRole: 'DELIVERER'  
-    // },
+    canActivate: [RoleGuard],  
+    data: { 
+      expectedRole: 'DELIVERER'  
+    },
 
   },
   {
     path: 'my-orders',
     component: AllOrdersComponent, 
-    // canActivate: [RoleGuard],  
-    // data: { 
-    //   expectedRole: 'CUSTOMER'  
-    // },
+    canActivate: [RoleGuard],  
+    data: { 
+      expectedRole: 'CUSTOMER'  
+    },
 
   }, 
   {
     path: 'restaurants',
     component: RestaurantViewComponent, 
-    // canActivate: [RoleGuard],  
-    // data: { 
-    //   expectedRole: 'CUSTOMER'  
-    // },
+    canActivate: [RoleGuard],  
+    data: { 
+      expectedRole: 'CUSTOMER'  
+    },
 
   }, 
   {
     path: 'restaurant/:id',
     component: RestaurantComponent, 
-    // canActivate: [RoleGuard],  
-    // data: { 
-    //   expectedRole: 'CUSTOMER'  
-    // },
+    canActivate: [RoleGuard],  
+    data: { 
+      expectedRole: 'CUSTOMER'  
+    },
 
   }, 
  

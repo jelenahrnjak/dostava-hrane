@@ -1,29 +1,27 @@
 package com.fooddelivery.usersservice.mapper;
-
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+ 
 import org.springframework.stereotype.Component;
 
 import com.fooddelivery.usersservice.dto.UserDto;
 import com.fooddelivery.usersservice.model.User;
-
-import lombok.RequiredArgsConstructor;
  
-@Mapper(componentModel = "spring")
+  
 @Component
-public interface UserMapper {
-
-    @Mapping(source = "user.id", target = "id")
-    @Mapping(source = "user.username", target = "username")
-    @Mapping(source = "token", target = "token")
-    @Mapping(source = "user.firstName", target = "firstName")
-    @Mapping(source = "user.lastName", target = "lastName")
-    @Mapping(source = "user.email", target = "email")
-    @Mapping(source = "user.phoneNumber", target = "phoneNumber")
-    @Mapping(source = "user.dateOfBirth", target = "dateOfBirth")
-    @Mapping(source = "user.address", target = "address")
-    @Mapping(source = "user.longitude", target = "longitude")
-    @Mapping(source = "user.latitude", target = "latitude")
-    @Mapping(source = "user.role", target = "role")
-    UserDto toUserDtoWithToken(User user, String token);
+public class UserMapper {
+  
+    public UserDto toUserDtoWithToken(User user, String token) {
+    	UserDto dto = new UserDto();
+    	dto.setId(user.getId());
+    	dto.setUsername(user.getUsername()); 
+    	dto.setFirstName(user.getFirstName());
+    	dto.setLastName(user.getLastName());
+    	dto.setEmail(user.getEmail());
+    	dto.setPhoneNumber(user.getPhoneNumber());
+    	dto.setAddress(user.getAddress());
+    	dto.setLongitude(user.getLongitude());
+    	dto.setLatitude(user.getLatitude());
+    	dto.setRole(user.getRole());
+    	dto.setRole(user.getRole());
+    	return dto;
+    };
 }

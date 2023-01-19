@@ -31,11 +31,13 @@ export class AuthService {
       'username': user.username,
       'password': user.password
     };
-    return this.apiService.post(this.config.auth_url + '/login', JSON.stringify(body), loginHeaders)
+    return this.apiService.post(this.config.user_url + '/login', JSON.stringify(body), loginHeaders)
       .pipe(map((res) => {
         console.log('Login success'); 
         this.access_token = res.accessToken;
         let decoded: any = jwt_decode(res.accessToken) 
+        console.dir(decoded)
+        alert('uspeh')
         sessionStorage.setItem("user", decoded.sub)
         sessionStorage.setItem("role", decoded.role) 
         sessionStorage.setItem("jwt", res.accessToken);
@@ -50,7 +52,7 @@ export class AuthService {
       // 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
     });
 
-    return this.apiService.post(this.config.auth_url + '/sign-up', JSON.stringify(user), headers)
+    return this.apiService.post(this.config.user_url + '/signup', JSON.stringify(user), headers)
       .pipe(map(() => {
         console.log('Registration success');
       }));

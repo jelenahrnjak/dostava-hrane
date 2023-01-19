@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fooddelivery.usersservice.dto.CredentialDTO;
 import com.fooddelivery.usersservice.dto.UserDto;
+import com.fooddelivery.usersservice.dto.UserTokenState;
 import com.fooddelivery.usersservice.model.User;
 import com.fooddelivery.usersservice.service.UserService;
 
@@ -25,10 +26,16 @@ public class UserController {
 	UserService userService;
 	
 	 @PostMapping("/login")
-	    public ResponseEntity<UserDto> login(@RequestBody CredentialDTO credentialsDto) {
-	        //log.info("Trying to login {}", credentialsDto.getUsername());
-	        return ResponseEntity.ok(userService.login(credentialsDto));
+	    public ResponseEntity<UserTokenState> login(@RequestBody CredentialDTO credentialsDto) {
+		 
+		 	String token = userService.login(credentialsDto);
+		 	if(token ==null ) {
+		    	return null;	 
+			}  
+			return  ResponseEntity.ok(new UserTokenState(token,(long) 3600000)); 
+		    
 	    }
+	  
 
 	    @PostMapping("/validateToken")
 	    public ResponseEntity<UserDto> signIn(@RequestParam String token) {
@@ -48,8 +55,7 @@ public class UserController {
 	    if (userService.registration(user) == null) {
 	    	return new ResponseEntity<>("Something went wrong with registration.", HttpStatus.BAD_REQUEST);	      
 	    }
-	    else {
-	        userService.registration(user);
+	    else { 
 	        return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
 	    }
 	}
@@ -58,7 +64,7 @@ public class UserController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> resgisterUser(@PathVariable("id") String id) {
-	    User user = userService.findById(id);
+	    UserDto user = userService.findById(id);
 	    if (user == null) {
 	    	return new ResponseEntity<>("User does not exists", HttpStatus.BAD_REQUEST);	   
 	    }

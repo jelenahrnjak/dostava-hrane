@@ -30,4 +30,7 @@ public class UserDto {
     private long latitude;
     
     private String token;
+	private String id;
+	private String role;
+
 }
