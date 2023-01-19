@@ -1,4 +1,4 @@
-<h1>Aktivne porudžbine</h1>
+<h1>Moje porudžbine</h1>
 <hr>
 
 <div class="table-responsive" *ngIf="show">
@@ -17,17 +17,18 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of activeOrders"> <td *ngIf="item.restaurant != undefined">{{item.restaurant.name}}</td>
-                <td *ngIf="item.restaurant.address == undefined">Marka Jankovica 2, Novi Sad</td>                      
+                <td *ngIf="item.restaurant.address == undefined">Marka Jankovica 2, Novi Sad</td>  
 
                 <td  *ngIf="item.restaurant.address != undefined"><span class="badge btn-green"  style="cursor: pointer;" (click)="showMap(item.restaurant.name, item.customer.longitude, item.customer.latitude)">Prikaži na mapi</span></td>
                 <td  *ngIf="item.restaurant.address == undefined"><span class="badge btn-green"  style="cursor: pointer;">Prikaži na mapi</span></td>
-
                 <td *ngIf="item.customer != undefined">{{item.customer.username}}</td>
                 <td *ngIf="item.customer != undefined">{{item.customer.address}}</td>     
                 <td *ngIf="item.customer == undefined">/</td>
                 <td *ngIf="item.customer == undefined">/</td>              
                 <td><span class="badge btn-green" (click)="showMap(item.customer.address, item.customer.longitude, item.customer.latitude)" style="cursor: pointer;">Prikaži na mapi</span></td>
-                <td><span class="badge btn-green2" (click)="takeOrder(item.orderId)" style="float:right; cursor: pointer;">Preuzmi porudžbinu</span></td>
+                <td *ngIf="item.orderStatus  == 'DELIVERING'"><span class="badge btn-green2" (click)="deliverOrder(item.orderId)" style="float:right; cursor: pointer;">Dostavi porudžbinu</span></td>
+                <td *ngIf="item.orderStatus  == 'DELIVERED'">DOSTAVLJENA</td>
+                            
             </tr>
         </tbody>
     </table>

@@ -5,15 +5,15 @@ import { RestaurantService } from '../../../services/restaurant.service';
 import { Order } from '../../../model/order.model'
 import { Restaurant } from '../../../model/restaurant.model';
 import { User } from '../../../model/user.model';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr'; 
-import {ActivatedRoute, Router} from '@angular/router'; 
 
 @Component({
-  selector: 'app-all-orders',
-  templateUrl: './all-orders.component.html',
-  styleUrls: ['./all-orders.component.scss']
+  selector: 'app-taken-orders',
+  templateUrl: './taken-orders.component.html',
+  styleUrls: ['./taken-orders.component.scss']
 })
-export class AllOrdersComponent implements OnInit {
+export class TakenOrdersComponent implements OnInit {
 
 
   activeOrders : Order[] = [] 
@@ -26,6 +26,7 @@ export class AllOrdersComponent implements OnInit {
   long = 0
   show = false
   constructor(
+    // private toastr: ToastrService, 
     private orderService: OrderService,
     private restaurantService : RestaurantService,
     private userService : UserService,
@@ -68,7 +69,7 @@ export class AllOrdersComponent implements OnInit {
 
   getAllActiveOrders(){
     
-    this.orderService.getAllActiveOrders().subscribe((data : Order[]) => {
+    this.orderService.findAllByDeliverer().subscribe((data : Order[]) => {
       this.activeOrders = data;
     }); 
   }
@@ -82,10 +83,10 @@ export class AllOrdersComponent implements OnInit {
     
   }
 
-  takeOrder(orderId : string){
-    this.orderService.taking(orderId, sessionStorage.getItem("userId")).subscribe(); 
-    this.toastr.success('Uspešno preuzimanje porudžbine')
-    this.router.navigate(["taken-orders"]); 
+  deliverOrder(orderId : string){
+    this.orderService.delivering(orderId).subscribe();
+    this.toastr.success('Uspešno dostavljena porudžbina') 
+    this.router.navigate(["active-orders"]); 
   }
 
 }

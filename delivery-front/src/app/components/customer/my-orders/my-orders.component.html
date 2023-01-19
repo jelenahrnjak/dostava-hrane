@@ -1,19 +1,19 @@
-<h1>Aktivne narudžbine</h1>
+<h1>Aktivne porudžbine</h1>
 <hr>
 
 <div class="row"> 
     <div class="card"  *ngFor="let c of activeOrders">
-        <img *ngIf="c.restaurant" :src="assets/images/restorani/{{c.restaurant.image}}" class="card-img-top" sty alt="Missing image">
+        <img *ngIf="c.restaurant" :src="assets/images/restorani/petrus.jpg" class="card-img-top" sty alt="Missing image">
         <ul class="list-group list-group-flush" >
-            <li *ngIf="c.restaurant" style="height: 35px; text-align: center;" class="list-group-item">Narudžbina iz restorana</li>    
+            <li *ngIf="c.restaurant" style="height: 35px; text-align: center;" class="list-group-item">porudžbina iz restorana</li>    
             <li  *ngIf="c.restaurant" class = "list-group-item"  style="cursor: pointer;" (click)="selectOrder(c)">
             <strong>{{c.restaurant.name}}</strong> 
             </li> 
             <li  style="height: 80px;" class="list-group-item"><strong>Cena:</strong> {{c.totalPrice}} $</li> 
             <li  style="height: 70px;" class="list-group-item"><strong>Status:</strong> {{c.orderStatus}}</li> 
             <li style="height: 70px;" class="list-group-item">
-                <button class="btn-green btn" style=" margin-top: 3%; margin-right: 3%;" (click)="selectOrder(c); display = 'display'">Detalji</button>  
-                <button class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(c.orderId);" [disabled]="c.orderStatus != 'CREATED'">Otkaži</button>  
+                <!-- <button class="btn-green btn" style=" margin-top: 3%; margin-right: 3%;" (click)="selectOrder(c); display = 'display'">Detalji</button>   -->
+                <button *ngif="c.orderStatus != 'CREATED'" class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(c.orderId);" >Otkaži</button>  
             </li> 
         </ul> 
     </div>

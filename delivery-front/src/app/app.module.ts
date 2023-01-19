@@ -31,6 +31,7 @@ import { MyOrdersComponent } from './components/customer/my-orders/my-orders.com
 import { RestaurantViewComponent } from './components/restaurant-view/restaurant-view.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { TakenOrdersComponent } from './components/deliverer/taken-orders/taken-orders.component';
 
  
 @NgModule({
@@ -44,7 +45,8 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     AllOrdersComponent,
     MyOrdersComponent,
     RestaurantViewComponent,
-    RestaurantComponent, 
+    RestaurantComponent,
+    TakenOrdersComponent, 
   ],
   imports: [
     CommonModule,

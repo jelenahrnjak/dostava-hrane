@@ -3,6 +3,8 @@ import { OrderService } from '../../../services/order.service';
 import { RestaurantService } from '../../../services/restaurant.service';
 import { Order } from '../../../model/order.model'
 import { Restaurant } from '../../../model/restaurant.model';
+import {ActivatedRoute, Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-my-orders',
@@ -22,7 +24,9 @@ export class MyOrdersComponent implements OnInit {
   constructor(
     // private toastr: ToastrService, 
     private orderService: OrderService,
-    private restaurantService : RestaurantService,
+    private restaurantService : RestaurantService, 
+    private toastr: ToastrService, 
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -60,6 +64,8 @@ export class MyOrdersComponent implements OnInit {
    
   cancelOrder(orderId : string){ 
     this.orderService.cancelOrder(orderId).subscribe(); 
+    this.toastr.success('Uspešno otkazivanje porudžbine')
+    this.router.navigate(["restaurants"]); 
   }
 
 

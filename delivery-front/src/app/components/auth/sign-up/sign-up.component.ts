@@ -68,7 +68,7 @@ export class SignUpComponent implements OnInit {
         .subscribe(data => { 
          
             this.toastr.success('Uspešna registracija!')  
-            this.router.navigate(['restaurants']);
+            this.router.navigate(['auth/login']);
             
           },
           error => { 

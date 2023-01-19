@@ -8,7 +8,10 @@ export class User {
         public email : string,
         public phoneNumber: string, 
         public username: string,
-        public address: Address
+        public address: string,
+        public longitude : string,
+        public latitude : string,
+
       ) {}
       
 }

@@ -32,9 +32,9 @@ export class OrderService {
     }));
   }
 
-  findAllByDeliverer(delivererId : any) { 
+  findAllByDeliverer() { 
 
-    return this.apiService.get(this.config.order_url + '/customer/' + delivererId)
+    return this.apiService.get(this.config.order_url + '/deliverer/' +  sessionStorage.getItem('userId'))
     .pipe(map(orders => { 
       return orders;
     }));
@@ -53,10 +53,29 @@ export class OrderService {
       }));
   }
 
-  cancelOrder(id) {
-    return this.apiService.put(this.config.order_url + `/canceling/{$id}`)
+  cancelOrder(id : any) {
+    return this.apiService.put(this.config.order_url + '/canceling/' + id)
     .pipe(map(c => {
       console.log('Canceling order success');
+    }))
+    .pipe(catchError(error => this.edit(error)));
+    ;
+  }
+
+  taking(orderId : any, delivererId:any) {
+    return this.apiService.put(this.config.order_url + '/delivering/' +orderId + '/' + delivererId)
+    .pipe(map(c => {
+      console.log('Taking order success');
+    }))
+    .pipe(catchError(error => this.edit(error)));
+    ;
+  }
+
+  
+  delivering(orderId : any) {
+    return this.apiService.put(this.config.order_url + '/delivered/' + orderId)
+    .pipe(map(c => {
+      console.log('Delivering order success');
     }))
     .pipe(catchError(error => this.edit(error)));
     ;
