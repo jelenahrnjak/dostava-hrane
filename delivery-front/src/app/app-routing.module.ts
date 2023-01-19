@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { ErrorPageComponent } from './components/core/error-page/error-page.component'; 
+import { MyOrdersComponent } from './components/customer/my-orders/my-orders.component';
 import { AllOrdersComponent } from './components/deliverer/all-orders/all-orders.component';
 import { RestaurantViewComponent } from './components/restaurant-view/restaurant-view.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
@@ -44,29 +45,25 @@ const routes: Routes = [
   },
   {
     path: 'my-orders',
-    component: AllOrdersComponent, 
-    canActivate: [RoleGuard],  
-    data: { 
-      expectedRole: 'CUSTOMER'  
-    },
+    component: MyOrdersComponent,  
 
   }, 
   {
     path: 'restaurants',
     component: RestaurantViewComponent, 
-    canActivate: [RoleGuard],  
-    data: { 
-      expectedRole: 'CUSTOMER'  
-    },
+    // canActivate: [RoleGuard],  
+    // data: { 
+    //   expectedRole: 'CUSTOMER'  
+    // },
 
   }, 
   {
     path: 'restaurant/:id',
     component: RestaurantComponent, 
-    canActivate: [RoleGuard],  
-    data: { 
-      expectedRole: 'CUSTOMER'  
-    },
+    // canActivate: [RoleGuard],  
+    // data: { 
+    //   expectedRole: 'CUSTOMER'  
+    // },
 
   }, 
  

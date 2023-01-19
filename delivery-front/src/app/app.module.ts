@@ -59,7 +59,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     Ng2SearchPipeModule,
     NgbModule,
     AgmCoreModule.forRoot({
-      apiKey : ''
+      apiKey : 'AIzaSyDMtluzuwB1vM1vQ_kF6XTESX4fbHoQSKM'
     })
   ],
   providers: [     

@@ -62,17 +62,23 @@ export class SignUpComponent implements OnInit {
     this.create()
   }
 
-  create(){
-    
-    this.authService.registration(this.form.value)
-      .subscribe(data => { 
-        this.toastr.success('Uspešna registracija!')  
-        this.router.navigate(['user']);
-      },
-        error => { 
-          console.log('Registration error');  
-          this.toastr.error(error['error'].message)
-        });
+  create(){ 
+
+        this.authService.registration(this.form.value)
+        .subscribe(data => { 
+         
+            this.toastr.success('Uspešna registracija!')  
+            this.router.navigate(['restaurants']);
+            
+          },
+          error => { 
+            if(error.status == 201){
+              this.toastr.success('Uspešna registracija!')  
+              this.router.navigate(['restaurants']);
+            }else{
+            console.log('Registration error');  
+            this.toastr.error(error['error'].message)}
+          });
   }
 
   

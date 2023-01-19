@@ -45,7 +45,7 @@ export class MyOrdersComponent implements OnInit {
   getAllActiveOrders(){
     
     this.activeOrders = []
-    const userId = sessionStorage.getItem('user')
+    const userId = sessionStorage.getItem('userId')
     this.orderService.findAllByCustomer(userId).subscribe((data : Order[]) => {
       this.activeOrders = data;
     }); 

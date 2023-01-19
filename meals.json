@@ -1,0 +1,153 @@
+[{
+  "_id": "319573d0-0476-4301-bbcd-ac8f7070632b",
+  "restautantId": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "Grilled lamb chops with mint pesto",
+  "description": "Tender, juicy lamb chops seasoned with rosemary and garlic, served with a bright and flavorful mint pesto.",
+  "mealType": "Main course",
+  "price": 25,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "7473f099-e98f-42d9-952b-740114e13fae",
+  "restautantId": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "Wild mushroom risotto with truffle oil",
+  "description": "Creamy risotto made with a variety of wild mushrooms and finished with a drizzle of truffle oil for a rich, earthy flavor.",
+  "mealType": "Starter",
+  "price": 20,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "b8864bfd-c9e4-4b34-8e18-6b14aab8e31e",
+  "restautantId": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "Pan-seared salmon with fennel and orange salad",
+  "description": "Fresh, flaky salmon seared to perfection and served over a refreshing salad of fennel and orange segments.",
+  "mealType": "Main course",
+  "price": 22,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "7ac4296d-a5db-4ce3-ad75-7208384c0c45",
+  "restautantId": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "Braised beef short ribs with red wine and thyme",
+  "description": "Slow-cooked beef short ribs in a rich, red wine and thyme sauce, served with creamy mashed potatoes.",
+  "mealType": "Main course",
+  "price": 28,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "e7706df4-dfaf-46f4-8e33-440f6ab46f37",
+  "restautantId": "d2d445a7-b9b7-4677-95d8-2c821746d721",
+  "name": "Spicy tuna roll",
+  "description": "Classic sushi roll filled with spicy tuna, avocado, and cucumber.",
+  "mealType": "Sushi",
+  "price": 14,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "8acb25a1-5451-4c77-934f-aedc533c2413",
+  "restautantId": "d2d445a7-b9b7-4677-95d8-2c821746d721",
+  "name": "Rainbow roll",
+  "description": "A colorful roll filled with a variety of fish, including tuna, salmon, yellowtail, and avocado.",
+  "mealType": "Sushi",
+  "price": 16,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "de28dd66-dbd5-4fc1-bb0e-beff4a5a1e94",
+  "restautantId": "d2d445a7-b9b7-4677-95d8-2c821746d721",
+  "name": "Eel avocado roll",
+  "description": "A sushi roll filled with grilled eel and avocado, topped with a sweet eel sauce.",
+  "mealType": "Sushi",
+  "price": 15,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "e90029c1-a628-4566-9cb6-ece9d7d574d4",
+  "restautantId": "12b6da89-a49f-4588-b519-24304e2b54e6",
+  "name": "Carne asada tacos with cilantro and onions",
+  "description": "Grilled, marinated skirt steak served in warm corn tortillas with fresh cilantro and onions.",
+  "mealType": "Tacos",
+  "price": 3.5,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "3534f147-702f-41b3-90b7-8e424ffb2aa4",
+  "restautantId": "12b6da89-a49f-4588-b519-24304e2b54e6",
+  "name": "Al pastor tacos with pineapple",
+  "description": "Marinated pork cooked on a spit, served in warm corn tortillas with diced pineapple and cilantro.",
+  "mealType": "Tacos",
+  "price": 4.5,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "9dfea2f5-5469-4e25-a660-378fb9d9aa7c",
+  "restautantId": "12b6da89-a49f-4588-b519-24304e2b54e6",
+  "name": "Cochinita pibil with pickled red onions",
+  "description": "Slow-roasted pork in achiote and citrus marinade, served with pickled red onions, black beans and tortillas.",
+  "mealType": "Main course",
+  "price": 20,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "7037f06f-5939-4b9c-b162-6e458337bd48",
+  "restautantId": "15c33066-b197-4b55-8ba8-2cee780891fb",
+  "name": "Beef pho with rare steak, brisket, and meatballs ",
+  "description": "A classic Vietnamese noodle soup made with beef broth, rice noodles, rare steak, brisket, and meatballs.",
+  "mealType": "Soup",
+  "price": 14,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "7d40e56d-a647-4ead-af2c-8c77415c27f9",
+  "restautantId": "15c33066-b197-4b55-8ba8-2cee780891fb",
+  "name": "Vegetable pho with mixed vegetables and tofu",
+  "description": " A vegan version of classic Vietnamese noodle soup made with vegetable broth, rice noodles, mixed vegetables, and tofu.",
+  "mealType": "Soup",
+  "price": 10,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "da6593ce-f7c6-4a98-934e-926e0c089cf8",
+  "restautantId": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "Grilled vegetables with balsamic glaze ",
+  "description": " Grilled vegetables drizzled with balsamic glaze, served with quinoa or couscous.",
+  "mealType": "Main course",
+  "price": 18,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "6687e296-3a79-4e19-9ca1-5f60912f2fb2",
+  "restautantId": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "Tiramisu ",
+  "description": " A traditional Italian dessert made with ladyfingers, mascarpone and espresso.",
+  "mealType": "Main course",
+  "price": 10,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "fcf4df12-356b-4175-a928-02ece907dd3d",
+  "restautantId": "ece8556e-0429-412c-9ca9-ae0ad00279ec",
+  "name": "Chicken Tikka Masala with yogurt and tomato ",
+  "description": "Grilled chicken in a rich, creamy tomato-based sauce.",
+  "mealType": "Main course",
+  "price": 18,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "85f2e308-0ffc-425e-a11c-56f24f368540",
+  "restautantId": "ece8556e-0429-412c-9ca9-ae0ad00279ec",
+  "name": "Vegetable Samosas with mint chutney ",
+  "description": "Triangular-shaped fried pastry filled with spiced vegetables and served with mint chutney.",
+  "mealType": "Apetizer",
+  "price": 8,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "3be12d43-994c-4a28-b9fb-3d61c5c0d6af",
+  "restautantId": "ece8556e-0429-412c-9ca9-ae0ad00279ec",
+  "name": "Naan bread with garlic and butter ",
+  "description": "A traditional Indian flatbread made with yeast, flour and yogurt.",
+  "mealType": "Side",
+  "price": 4,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "c1259d26-21b3-40ee-a8c5-6f3290492c71",
+  "restautantId": "8b49007f-a9fd-4f08-91e9-34804222d33a",
+  "name": "Baklava with honey and walnuts ",
+  "description": "A traditional Greek pastry made with layers of phyllo dough, honey and chopped walnuts.",
+  "mealType": "Dessert",
+  "price": 4,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+},{
+  "_id": "bb68e32e-6e34-44f0-abaf-f3dd0edfe452",
+  "restautantId": "8b49007f-a9fd-4f08-91e9-34804222d33a",
+  "name": "Moussaka with eggplant and ground beef  ",
+  "description": "A traditional Greek casserole made with eggplant, ground beef, and a creamy béchamel sauce.",
+  "mealType": "Main course",
+  "price": 20,
+  "_class": "com.fooddelivery.restaurantservice.model.Meal"
+}]

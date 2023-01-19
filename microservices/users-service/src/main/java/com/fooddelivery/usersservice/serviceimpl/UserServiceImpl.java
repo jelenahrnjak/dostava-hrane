@@ -133,6 +133,7 @@ public class UserServiceImpl implements UserService{
                .setIssuer("user-service")
                .setSubject(user.getUsername())
                .claim("role",user.getRole())
+               .claim("userId",user.getId())
                .setAudience("web")
                .setIssuedAt(new Date())
                .setExpiration(validity)

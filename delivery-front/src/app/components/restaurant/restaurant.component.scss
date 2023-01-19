@@ -63,6 +63,10 @@
     display: flex;  
     flex:1 ;  
 }
+.column div{  
+  display: flex;  
+  flex:0 ;  
+}
 
 .btn {
      
@@ -78,7 +82,13 @@
     min-width: 25%;
     
   }
-
+  h1{
+    margin-top : 30px;
+    margin-left: 3%;
+    margin-right: 2%;
+    font-size: 30px;
+    color: #04664c
+  }
 .btn2 {
     
     background-color:  #ffc244;

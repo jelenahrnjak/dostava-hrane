@@ -36,6 +36,7 @@ export class RestaurantViewComponent implements OnInit {
 
     clear(){
     
+      this.searchString = ""
         this.restaurantService.getAll().subscribe((data : Restaurant[]) => {
           this.restaurants = data;
           console.dir(data)

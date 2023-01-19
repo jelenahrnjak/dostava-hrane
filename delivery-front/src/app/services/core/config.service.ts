@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ConfigService {
 
-  private _api_url = environment.baseUrl 
+  private _api_url = environment.baseUrl  
   private _user_url = this._api_url + '/users-service';  
   private _order_url = this._api_url + '/order-service';  
   private _restaurant_url = this._api_url + '/restaurant-service';  

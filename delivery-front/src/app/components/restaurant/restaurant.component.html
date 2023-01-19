@@ -1,27 +1,47 @@
 
-    <div>
-    <div class="row" > 
+    
+        <h1 >
+            Obroci
+        
+        </h1>  
+        <hr>
+    <div class="column">
+        
+    <div class="row"> 
  
-            <div class="card"  *ngFor="let c of meals">
+            <div [ngStyle]="{'width': (role == 'CUSTOMER') ? '90%' : '100%'}" class="card"  *ngFor="let c of meals">
                 <img :src="assets/images/restorani/petrus.jpg" class="card-img-top" sty alt="Missing image">
                 <ul class="list-group list-group-flush">
-                <li class = "list-group-item">
+                <li class = "list-group-item" style="height: 40px;">
                 <strong>{{c.name}}</strong>
                 </li> 
-                <li style="height: 60px;" class="list-group-item">{{c.description}}</li> 
-                <li style="height: 40px;" class="list-group-item">{{c.price}}</li> 
-                <li class="list-group-item">
-                    <button (click) = "c.count =c.count - 1">
+                <li style="height: 100px;" class="list-group-item">{{c.description}}</li> 
+                <li style="height: 40px;" class="list-group-item">Type: {{c.mealType}}</li> 
+                <li style="height: 40px;" class="list-group-item"><strong>{{c.price}} $</strong></li> 
+                <li *ngIf="role == 'CUSTOMER'" class="list-group-item">
+                    <button (click) = "c.itemCount =c.itemCount - 1; changed(c,  c.itemCount)">
                         <i class="fa fa-arrow-down"></i> 
                       </button>
                       
-                  <input type="number" style="width: 50%;" [(ngModel)]="c.count"> 
-                  <button (click) = "c.count = c.count + 1">
+                  <input type="number" style="width: 50%;" [(ngModel)]="c.itemCount" > 
+                  <button (click) = "c.itemCount = c.itemCount + 1; changed(c, c.itemCount)">
                       <i class="fa fa-arrow-up"></i> 
                     </button>
                 </li>
                 </ul>   
         </div>
+        <div *ngIf="role == 'CUSTOMER' && order.totalPrice != 0" style="width: 10%;" class="card">
+            <h1>Korpa</h1>
+            <label style="font-size: 18px; color: rgb(185, 18, 18);"><strong>Total price: {{order.totalPrice}} $</strong></label>
+            <hr>
+            <label *ngFor="let item of order.orderItems"><strong>{{item.itemName}}: {{item.itemCount}}</strong><br><strong>Price: {{item.itemPrice}} $</strong><hr></label>
+        
+            <li class="list-group-item">
+                <button *ngIf="role == 'CUSTOMER'" class="small-btn btn"   (click)="createOrder()">Naruči <li class="fa fa-cart-arrow-down"></li></button>  
+
+            </li>
+        </div>
     </div>
+
     
     </div>  

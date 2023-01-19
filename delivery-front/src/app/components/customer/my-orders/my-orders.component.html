@@ -10,10 +10,7 @@
             <strong>{{c.restaurant.name}}</strong> 
             </li> 
             <li  style="height: 80px;" class="list-group-item"><strong>Cena:</strong> {{c.totalPrice}}</li> 
-            <li  style="height: 70px;" class="list-group-item"><strong>Status:</strong> {{c.orderStatus}}</li>
-            <!-- <li *ngIf="c.headOfficeId == null" style="height: 80px;" class="list-group-item">
-                <a class="btn-green btn" href="admin/new-building" style=" margin-top: 3%; ">Dodaj sedište</a>  
-            </li>             -->
+            <li  style="height: 70px;" class="list-group-item"><strong>Status:</strong> {{c.orderStatus}}</li> 
             <li style="height: 70px;" class="list-group-item">
                 <button class="btn-green btn" style=" margin-top: 3%;" (click)="selectOrder(c)">Detalji</button>  
                 <button class="btn-red btn" style=" margin-top: 3%;" (click)="cancelOrder(c.orderId)" disabled="c.orderStatus != 'CREATED'">Otkaži</button>  

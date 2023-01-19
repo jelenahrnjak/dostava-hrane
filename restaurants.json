@@ -1,0 +1,69 @@
+[{
+  "_id": "d2d445a7-b9b7-4677-95d8-2c821746d721",
+  "name": "Sushi Palace",
+  "description": "A elegant sushi restaurant offering a variety of traditional and contemporary sushi rolls and sashimi.",
+  "types": [
+    "Asian",
+    "Japanese"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "12b6da89-a49f-4588-b519-24304e2b54e6",
+  "name": "La Taqueria",
+  "description": "A casual, authentic Mexican restaurant known for its street-style tacos and homemade salsas.",
+  "types": [
+    "Mexican"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "15c33066-b197-4b55-8ba8-2cee780891fb",
+  "name": "Pho King",
+  "description": "A small, casual Vietnamese restaurant specializing in Pho noodle soups and other traditional Vietnamese dishes.",
+  "types": [
+    "Asian",
+    "Vietnamese"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "27a46dad-a0de-4a60-8fbc-917b4ec80690",
+  "name": "The Italian Job",
+  "description": "A family-run, casual Italian restaurant with a menu of classic and contemporary Italian dishes",
+  "types": [
+    "Italian"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "ece8556e-0429-412c-9ca9-ae0ad00279ec",
+  "name": "The Curry House",
+  "description": "An Indian restaurant with a menu of traditional and modern Indian curries and tandoori dishes.",
+  "types": [
+    "Indian"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "167f1fd3-f89c-4aea-8344-fd4546b3f085",
+  "name": "The Greek",
+  "description": "A casual Greek restaurant with a menu of classic Greek dishes and Mediterranean flavors.",
+  "types": [
+    "Mediterranean",
+    "Greek"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "a4adb589-caa2-4150-a9cc-188ce76b9a39",
+  "name": "The Fish Market",
+  "description": "A seafood restaurant with a menu of fresh, sustainable seafood dishes and raw bar options.",
+  "types": [
+    "Seafood"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+},{
+  "_id": "84f7ddbb-dc03-4728-8226-d74c410cd7ca",
+  "name": "The Rustic Table",
+  "description": "A cozy, farm-to-table restaurant serving locally sourced, seasonal ingredients in hearty, rustic dishes.",
+  "types": [
+    "Mediterranean",
+    "European"
+  ],
+  "_class": "com.fooddelivery.restaurantservice.model.Restaurant"
+}]

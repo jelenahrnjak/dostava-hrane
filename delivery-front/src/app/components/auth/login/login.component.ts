@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
         const role = sessionStorage.getItem("role"); 
         switch(role){
           case "CUSTOMER":
-            this.router.navigate(["user"]); 
+            this.router.navigate(["restaurants"]); 
             break;
           case "DELIVERER":
-            this.router.navigate(["deliverer"]);
+            this.router.navigate(["active-orders"]);
             break; 
           default:
               this.router.navigate(["auth/login"])

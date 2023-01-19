@@ -40,4 +40,15 @@ export class OrderService {
     }));
   }
 
+  createOrder(order : any) { 
+    const body = {
+      'customerId' : sessionStorage.getItem('userId'),
+      'restaurant' : order.restaurantId,
+      'orderItems' : order.orderItems
+    }
+    return this.apiService.post(this.config.order_url + '/order', JSON.stringify(body))
+      .pipe(map(() => {
+        console.log('Creating order success');
+      }));
+  }
 }

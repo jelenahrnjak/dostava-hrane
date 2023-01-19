@@ -14,7 +14,7 @@ export class Order {
         public creationDate : Date,
         public totalPrice: number = 0, 
         public orderStatus: string,  
-        public additionalServices: OrderItem[], 
+        public orderItems: OrderItem[], 
       ) {}
       
 }

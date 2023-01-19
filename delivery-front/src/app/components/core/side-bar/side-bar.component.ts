@@ -18,10 +18,10 @@ export class SideBarComponent implements OnInit {
   goToHomePage(){
     switch(this.role){
       case "CUSTOMER":
-        this.router.navigate(["user"]); 
+        this.router.navigate(["restaurants"]); 
         break;
       case "DELIVERER":
-        this.router.navigate(["deliverer"]);
+        this.router.navigate(["active-orders"]);
         break;
       default:
           this.router.navigate(["auth/login"])

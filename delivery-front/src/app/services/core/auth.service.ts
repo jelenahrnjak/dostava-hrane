@@ -36,10 +36,10 @@ export class AuthService {
         console.log('Login success'); 
         this.access_token = res.accessToken;
         let decoded: any = jwt_decode(res.accessToken) 
-        console.dir(decoded)
-        alert('uspeh')
+        console.dir(decoded) 
         sessionStorage.setItem("user", decoded.sub)
         sessionStorage.setItem("role", decoded.role) 
+        sessionStorage.setItem("userId", decoded.userId) 
         sessionStorage.setItem("jwt", res.accessToken);
         sessionStorage.setItem("refreshToken", res.expiresIn);  
       }));
@@ -53,7 +53,7 @@ export class AuthService {
     });
 
     return this.apiService.post(this.config.user_url + '/signup', JSON.stringify(user), headers)
-      .pipe(map(() => {
+      .pipe(map((res) => {
         console.log('Registration success');
       }));
   }
