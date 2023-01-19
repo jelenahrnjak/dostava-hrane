@@ -1,4 +1,4 @@
-package com.fooddelivery.userservice.controller;
+package com.fooddelivery.usersservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fooddelivery.userservice.dto.CredentialDTO;
-import com.fooddelivery.userservice.dto.UserDto;
-import com.fooddelivery.userservice.model.User;
-import com.fooddelivery.userservice.service.UserService;
+import com.fooddelivery.usersservice.dto.CredentialDTO;
+import com.fooddelivery.usersservice.dto.UserDto;
+import com.fooddelivery.usersservice.model.User;
+import com.fooddelivery.usersservice.service.UserService;
 
 import jakarta.websocket.server.PathParam;
 
