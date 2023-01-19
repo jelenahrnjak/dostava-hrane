@@ -29,12 +29,10 @@
                         <div class="input-group mb-3">
                         <input class="form-control" type="text" formControlName="phoneNumber" placeholder="Broj telefona">
                         </div> 
-                        <div class="input-group mb-3"> 
-                            <label *ngIf="address != ''">Adresa: {{address}}</label>
-                            <agm-map [zoom]="13" [latitude]="lat" [longitude]="lng">
+                        <label *ngIf="address != ''">Adresa: {{address}}</label>
+                         <agm-map class="input-group mb-3" [zoom]="13" [latitude]="lat" [longitude]="lng">
                                 <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
-                            </agm-map> 
-                        </div>
+                            </agm-map>  
                         <div class="input-group mb-3"> 
                             <input class="form-control" type="password" formControlName="password" placeholder="Lozinka" title="Mora da sadži najmanje 8 karaktera, malo, veliko slovo, cifru i specijalni karakter.">   
                         </div>

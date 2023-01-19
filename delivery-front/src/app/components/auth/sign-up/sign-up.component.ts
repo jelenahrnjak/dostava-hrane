@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
       lastName: ['', Validators.compose([Validators.required, Validators.maxLength(64)])],
       email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
       phoneNumber: ['', Validators.compose([Validators.required])],
-      address: ['', Validators.compose([Validators.required, Validators.maxLength(64)])],
+      address: ['', Validators.compose([Validators.required])],
       longitude: [''],//Validators.compose([Validators.required])],
       latitude: [''],// Validators.compose([Validators.required])],
     }); 
@@ -98,8 +98,9 @@ export class SignUpComponent implements OnInit {
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 6;
-          this.address = results[0].formatted_address;
-          console.log(results[0])
+          this.address = results[0].formatted_address; 
+          this.form.get('address')?.setValue(this.address)  
+          console.log(this.address)
          
 
         } else {
@@ -112,7 +113,6 @@ export class SignUpComponent implements OnInit {
 
     });
 
-    console.log(this.address)
   }
 
   resetAddress(){

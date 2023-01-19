@@ -17,7 +17,7 @@ export class ErrorPageComponent implements OnInit {
   goBack(){
     const role = sessionStorage.getItem('role')
     switch(role){
-      case "USER":
+      case "CUSTOMER":
         this.router.navigate(["user"]); 
         break;
       case "DELIVERER":

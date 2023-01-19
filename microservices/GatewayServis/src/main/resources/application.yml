@@ -35,22 +35,22 @@ spring:
           uri: http://order-service
           predicates:
             - Path=/order-service/**
-          #filters:
-           # - AuthFilter
+          filters:
+            - AuthFilter
         - id: recommendationModules
           uri: http://recommendation-service
           predicates:
             - Path=/recommendation-service/**
-          #filters:
-            #- AuthFilter
+          filters:
+            - AuthFilter
         - id: restaurantModules
           uri: http://restaurant-service
           predicates:
             - Path=/restaurants/**
-          #filters:
-            #- AuthFilter
+          filters:
+            - AuthFilter
             
         - id: userModules
-          uri: http://user-service
+          uri: http://users-service
           predicates:
-            - Path=/user-service/**
+            - Path=/users-service/**
